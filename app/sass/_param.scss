@@ -1,0 +1,99 @@
+body{
+	font: 16px/1.2 'Josefin Sans', sans-serif;
+	color: #505050;
+	background: #fff;
+}
+h1{
+	font-family: 'IM Fell English SC', serif;
+}
+.flex-wrap{
+	flex-wrap: wrap;
+}
+.d-flex{
+	display: flex;
+}
+.align-items-center{
+	align-items:center;
+}
+.justify-content-center{
+	justify-content:center;
+}
+.list-unstyled{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.centered{
+	max-width: 1280px;
+	margin-right: auto;
+	margin-left: auto;
+	width: 100%;
+}
+.flex-column{
+	flex-direction: column;
+}
+.text-center{
+	text-align: center;
+}
+.btn_var_1{
+	width: 500px;
+	height: 138px;
+	font-size: 33px;
+	line-height: 24px;
+	color: #d9d9d9;
+	text-align: center;
+	background: url(../images/btn_var_1-border.png) no-repeat;
+	background-size: cover;
+	display: inline-flex;
+	align-items:center;
+	justify-content:center;
+	text-align: center;
+	text-shadow:0 8px 10px  rgba(#000,.35);
+	position: relative;
+	// z-index: 5;
+	&:before{
+		content: "";
+		background: url(../images/textura_var_1.png) repeat;
+		position: absolute;
+		top: 10%;
+		left: 2%;
+		width: 97%;
+		height: 74%;
+		z-index: -1;
+	}
+	span{
+		position: relative;
+		// z-index: 1;
+		width: 97%;
+		height: 74%;
+		&:after{
+			content: "";
+			background: radial-gradient(to top,#7b2327 0%, transparent);
+			position: absolute;
+			top: 0;
+			left: 1%;
+			width: 99%;
+			height: 94%;
+			z-index: -1;
+			opacity: 0;
+			transition: all 0.9s ease;
+		}
+	}
+	&:hover{
+		text-decoration: none;
+		color: #d9d9d9;
+
+		span{
+			&:after{
+				opacity: 1;
+				transition: all 0.8s ease;
+			}
+		}
+	}
+	&.btn_lg{
+		font-size: 42px;
+		line-height: 43px;
+		width: 640px;
+		height: 176px;
+	}
+}

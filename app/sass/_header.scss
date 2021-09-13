@@ -1,0 +1,50 @@
+.header{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 42px 10px;
+	z-index: 10;
+	&.header_scrolled{
+		background: #000;
+	}
+	ul{
+		font-weight: normal;
+		li{
+			margin-left: 40px;
+			position: relative;
+			&:hover{
+				
+			}
+			a{
+				font-size: 18px;
+				line-height: 20px;
+				color: #fff;
+				position: relative;
+				
+				&:hover{
+					text-decoration: none;
+					&:after{
+						content: "";
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform:translate(-50%,-50%);
+						width: 199px;
+						height: 111px;
+						z-index: -1;
+						background: url(../images/grad_nav.png) no-repeat;
+					}
+				}
+			}
+		}
+		&.main_nav{
+			font-weight: 300;
+			margin-right: auto;
+			li{
+				margin-left: 0;
+				margin-right: 40px;
+			}
+		}
+	}
+}

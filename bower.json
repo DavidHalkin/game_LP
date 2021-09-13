@@ -1,0 +1,20 @@
+{
+  "name": "ecommerce_site",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Halkin David northfire@mail.ru"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}

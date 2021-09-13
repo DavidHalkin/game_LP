@@ -1,0 +1,106 @@
+@import
+'_reboot.scss',
+'_param',
+'_header',
+'_fonts.scss';
+
+.wrapper{
+	overflow: hidden;
+}
+.hero_block{
+	min-height: 100vh;
+	padding: 100px 10px;
+	font-family: 'IM Fell English SC', serif;
+	position: relative;
+	.txt_part{
+		position: relative;
+		z-index: 1;
+	}
+	h1{
+		color: #1f1f1f;
+		font-size: 112px;
+		line-height: 113px;
+		font-weight: normal;
+		margin-bottom: 0;
+		padding-bottom: 28px;
+	}
+	.bg_img{
+		position: absolute;
+		// top: 50%;
+		// left: 50%;
+		// transform:translate(-50%,-50%);
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		object-fit:cover;
+		// mask: url(../images/mask.jpg)  0 100%  no-repeat;
+		// mask-size: 100% 200px;
+		// img{
+		// 	width: 100%;
+		// 	height: 100%;
+		// 	object-fit:cover;
+		// }
+		// .mask{
+		// 	position: absolute;
+		// 	bottom: 0;
+		// 	left: 0;
+		// }
+	}
+	.link{
+		margin-top: 23px;
+		a{
+			color: #000;
+			font-size: 30px;
+			text-shadow:0 5px 8px  rgba(#000,.5);
+			text-shadow:0 0 8px  rgba(#000,.5);
+			position: relative;
+			&:hover{
+				text-decoration: none;
+				&:after{
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform:translate(-50%,-50%);
+					width: 320px;
+					height: 188px;
+					z-index: -1;
+					background: url(../images/grad_link.png) no-repeat;
+				}
+			}
+		}
+	}
+}
+.part_bg{
+	background: url(../images/body_bg.png) repeat;
+	position: relative;
+}
+.top_border{
+	background: url(../images/body_bg.png) repeat;
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	top: -200px;
+	left: 0;
+	mask: url(../images/mask3.png)  0 0  no-repeat;
+	mask-size: 100% 200px;
+}
+.bottom_border{
+	background: url(../images/body_bg.png) repeat;
+	width: 100%;
+	height: 200px;
+	mask: url(../images/mask3.png)  0 0  no-repeat;
+	mask-size: 100% 200px;
+	bottom: -200px;
+	left: 0;
+	position: absolute;
+	transform:scale(-1,-1);
+}
+.view_back{
+	height: 600px;
+	width: 100%;
+	background: url(../images/back.jpg) no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+}
