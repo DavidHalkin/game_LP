@@ -5,8 +5,9 @@
 	width: 100%;
 	padding: 42px 10px;
 	z-index: 10;
+	transition: background 0.7s ease;
 	&.header_scrolled{
-		background: #000;
+		background: rgba(#000,.9);
 	}
 	ul{
 		font-weight: normal;
@@ -21,19 +22,25 @@
 				line-height: 20px;
 				color: #fff;
 				position: relative;
-				
+				&:after{
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform:translate(-50%,-50%);
+					width: 199px;
+					height: 111px;
+					z-index: -1;
+
+					background: url(../images/grad_nav.png) no-repeat;
+					opacity: 0;
+					transition: all 0.4s ease;
+				}
 				&:hover{
 					text-decoration: none;
 					&:after{
-						content: "";
-						position: absolute;
-						top: 50%;
-						left: 50%;
-						transform:translate(-50%,-50%);
-						width: 199px;
-						height: 111px;
-						z-index: -1;
-						background: url(../images/grad_nav.png) no-repeat;
+						opacity: 1;
+						
 					}
 				}
 			}

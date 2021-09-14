@@ -1,0 +1,73 @@
+.footer{
+	overflow: hidden;
+	padding: 80px 80px 27px;
+	position: relative;
+	z-index: 3;
+	.copy{
+		font-size: 16px;
+		line-height: 20px;
+		color: #fff;
+		// font-style: italic;
+	}
+	&:before,&:after{
+		content: "";
+		width: 260px;
+		height: 282px;
+		position: absolute;
+		left: 0;
+		bottom: 30px;
+		background: url(../images/corner.png) no-repeat;
+		background-size: cover;
+		transform:scale(1,-1);
+		z-index: -1;
+	}
+	&:after{
+		left: auto;
+		right: 0;
+		transform:scale(-1,-1);
+	}
+	h3{
+		font-size: 20px;
+		line-height: 22px;
+		color: #fff;
+		text-transform: uppercase;
+		font-weight: normal;
+		margin-bottom: 44px;
+	}
+	.col_6{
+		max-width: 50%;
+		flex:0 0 50%;
+	}
+	.text_list{
+		li{
+			padding-bottom: 22px;
+		}
+		a{
+			font-size: 24px;
+			line-height: 26px;
+			color: #ffcc00;
+			font-weight: 300;
+			text-decoration: underline;
+			&:hover{
+				text-decoration: none;
+			}
+		}
+	}
+}
+.txt_info{
+	padding-bottom: 63px;
+}
+.btn_row{
+	padding-bottom: 92px;
+}
+.soc_list{
+	li{
+		margin-right: 30px;
+		a{
+			width: 80px;
+			height: 80px;
+			background: #000;
+			display: block;
+		}
+	}
+}
