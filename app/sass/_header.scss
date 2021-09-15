@@ -3,20 +3,30 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	padding: 42px 10px;
+	padding: 29px 10px;
 	z-index: 10;
-	transition: background 0.7s ease;
+	transition: all 0.7s ease;
+	&:before{
+		content: "";
+		width: 100%;
+		height: 100px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		background: linear-gradient(to bottom, rgba(0,0,0,0.75) 0%,rgba(0,0,0,0.66) 17%,rgba(0,0,0,0.49) 38%,rgba(0,0,0,0.19) 71%,rgba(0,0,0,0.05) 90%,rgba(0,0,0,0) 100%);
+		transition: all 0.7s ease;
+	}
 	&.header_scrolled{
-		background: rgba(#000,.9);
+		background: rgba(#000,.8);
+		&:before{
+			top: -100px;
+		}
 	}
 	ul{
 		font-weight: normal;
-		li{
+		li,.active{
 			margin-left: 40px;
 			position: relative;
-			&:hover{
-				
-			}
 			a{
 				font-size: 18px;
 				line-height: 20px;
@@ -29,9 +39,9 @@
 					left: 50%;
 					transform:translate(-50%,-50%);
 					width: 199px;
-					height: 111px;
+					height: 97px;
 					z-index: -1;
-
+					margin-top: 10px;
 					background: url(../images/grad_nav.png) no-repeat;
 					opacity: 0;
 					transition: all 0.4s ease;
@@ -41,6 +51,20 @@
 					&:after{
 						opacity: 1;
 						
+					}
+				}
+			}
+			&.active{
+				a{
+
+				}
+			}
+		}
+		li{
+			&.active{
+				a{
+					&:after{
+						opacity: 1;
 					}
 				}
 			}

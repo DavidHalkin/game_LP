@@ -66,8 +66,18 @@
 		a{
 			width: 80px;
 			height: 80px;
-			background: #000;
+			background: url(../images/soc.png) no-repeat;
 			display: block;
+			transition: filter 0.3s ease;
+			&:hover{
+				filter: brightness(2);
+			}
+			&.soc_1{
+				background-position: 0 -80px;
+			}
+			&.soc_3{
+				background-position: 0 -160px;
+			}
 		}
 	}
 }
