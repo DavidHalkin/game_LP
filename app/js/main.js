@@ -7,4 +7,9 @@ $(document).ready(function(){
 	        $('.header_js').removeClass('header_scrolled');
 	    }
 	});
+	// mob menu
+	$(".btn_mob_js").click(function(){
+        $(".nav_holder_js").toggleClass("opened");
+        $(this).toggleClass("opened");
+    });
 });

@@ -1,5 +1,10 @@
 .roadmap_section{
 	width: 1280px;
 	height: 1920px;
-	background: url(../images/map/map_bg.png) no-repeat;
+	background: url(../images/map/map_bg.webp) no-repeat;
+	@media screen and (max-width: 1280px) {
+		width: 100%;
+		height: auto;
+		background: none;
+	}
 }

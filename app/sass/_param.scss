@@ -38,6 +38,12 @@ h1,h2,h3{
 .text-center{
 	text-align: center;
 }
+.btn_lg{
+	font-size: 42px;
+	line-height: 43px;
+	width: 640px;
+	height: 176px;
+}
 .btn_var_1{
 	width: 500px;
 	height: 138px;
@@ -93,11 +99,12 @@ h1,h2,h3{
 			}
 		}
 	}
-	&.btn_lg{
-		font-size: 42px;
-		line-height: 43px;
-		width: 640px;
-		height: 176px;
+	
+	@media screen and (max-width: 1280px)  {
+		width: 290px;
+		height: 80px;
+		font-size: 19px;
+		line-height: 20px;
 	}
 }
 .btn_var_2{
@@ -140,23 +147,63 @@ h1,h2,h3{
 			opacity: 1;
 		}
 	}
-}
-.has_shadow{
-	&:after,&:before{
-		content: "";
-		width: 440px;
-		height: 100%;
-		position: absolute;
-		bottom: 0;
-		right: 0;
-		top: 0;
-		z-index: 2;
-		background: linear-gradient(to right,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.02) 26%,rgba(0,0,0,0.06) 31%,rgba(0,0,0,0.08) 38%,rgba(0,0,0,0.09) 44%,rgba(0,0,0,0.13) 46%,rgba(0,0,0,0.14) 50%,rgba(0,0,0,0.17) 51%,rgba(0,0,0,0.18) 53%,rgba(0,0,0,0.17) 54%,rgba(0,0,0,0.21) 56%,rgba(0,0,0,0.25) 61%,rgba(0,0,0,0.31) 64%,rgba(0,0,0,0.34) 68%,rgba(0,0,0,0.38) 70%,rgba(0,0,0,0.37) 71%,rgba(0,0,0,0.42) 73%,rgba(0,0,0,0.53) 81%,rgba(0,0,0,0.55) 82%,rgba(0,0,0,0.55) 83%,rgba(0,0,0,0.69) 91%,rgba(0,0,0,0.71) 94%,rgba(0,0,0,0.74) 96%,rgba(0,0,0,0.76) 97%,rgba(0,0,0,0.8) 100%);
-		// background: red;
+	@media screen and (max-width: 1280px) {
+		font-size: 21px;
+		line-height: 23px;
+		width: 290px;
+		height: 69px;
 	}
-	&:before{
-		right: auto;
-		left: 0;
-		transform:scale(-1,1);
+}
+.img-fluid{
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+.md_block{
+	@media screen and (max-width: 1280px) {
+		display: block;
+		// padding-bottom: 6px;
+	}
+}
+.view_back{
+	height: 600px;
+	width: 100%;
+	background: url(../images/back.jpg) no-repeat 50% 50%;
+	background-attachment: fixed;
+	background-size: cover;
+	position: relative;
+	z-index: 1;
+	@media screen and (max-width: 1280px){
+		height: 300px;
+	}
+
+}
+
+.hr_mob{
+	width: 200px;
+	height: 13px;
+	background: url(../images/hr_mob.png) no-repeat;
+	background-size: cover;
+	display: none;
+	margin: 0 auto 30px;
+	position: relative;
+	transform:translateX(-20px);
+	// &:after{
+	// 	content: "";
+	// 	width: 9999px;
+	// 	height: 13px;
+	// 	position: absolute;
+	// 	top: 0;
+	// 	left: 50%;
+	// 	background: url(../images/hr_mob.png) no-repeat 50% 0;
+	// 	background-size: 200px 13px;
+	// 	transform:translateX(-50%);
+	// }
+	
+	.post_item_inverse  &{
+		transform:translateX(20px);
+	}
+	@media screen and (max-width: 1280px) {
+		display: block;
 	}
 }
