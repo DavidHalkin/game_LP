@@ -4,7 +4,7 @@
 	background: url(../images/map/map_bg.webp) no-repeat;
 	position: relative;
 	.paint_part{
-		background: rgba(red,.05);
+		// background: rgba(red,.05);
 		position: absolute;
 		top: 0;
 		bottom: 0;
@@ -20,10 +20,16 @@
 	}
 	[class *= "step_"]{
 		color: #171717;
-		margin-left: 50%;
-		+ [class *= "step_"]{
-			margin-top: 100px;
+		position: absolute;
+		.bg_step{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 1;
 		}
+		h4,p,.line_decor{position: relative;z-index: 2;}
 		h4{
 			font-size: 30px;
 			line-height: 32px;
@@ -40,13 +46,144 @@
 			margin-bottom: 20px;
 			width: 307px;
 			height: 5px;
+			margin-left: -20px;
 			background: url(../images/map/line_decor.png) no-repeat;
 			background-size: cover;
 		}
 		&.step_1{
-			width: 506px;
-			height: 227px;
-			background: url(../images/map/step_1/bg.png) no-repeat;
+			width: 397px;
+			height: 208px;
+			top: 162px;
+			left: 210px;
+			padding: 15px 0 0 55px;
+			.bg_step{
+				background: url(../images/map/step_1/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				top: 54px;
+				left: -41px;
+			}
+		}
+		&.step_2{
+			width: 375px;
+			height: 165px;
+			top: 151px;
+			left: 737px;
+			padding: 15px 0 0 35px;
+			.bg_step{
+				background: url(../images/map/step_2/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				top: 116px;
+				left: -65px;
+			}
+		}
+		&.step_3{
+			width: 341px;
+			height: 138px;
+			top: 484px;
+			left: 720px;
+			padding: 23px 0 0 35px;
+			.bg_step{
+				background: url(../images/map/step_3/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				top: 126px;
+				right: -46px;
+			}
+		}
+		&.step_4{
+			width: 418px;
+			height: 239px;
+			top: 417px;
+			left: 92px;
+			padding: 23px 0 0 61px;
+			.bg_step{
+				background: url(../images/map/step_4/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				top: 50px;
+				right: -98px;
+			}
+		}
+		&.step_5{
+			width: 423px;
+			height: 182px;
+			top: 786px;
+			left: 201px;
+			padding: 10px 0 0 61px;
+			.bg_step{
+				background: url(../images/map/step_5/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				top: 96px;
+				left: -22px;
+			}
+		}
+		&.step_6{
+			width: 418px;
+			height: 188px;
+			top: 986px;
+			left: 669px;
+			padding: 10px 0 0 51px;
+			.bg_step{
+				background: url(../images/map/step_6/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				top: -92px;
+				right: 1px;
+			}
+		}
+		&.step_7{
+			width: 443px;
+			height: 270px;
+			top: 1299px;
+			left: 694px;
+			padding: 10px 0 0 51px;
+			.bg_step{
+				background: url(../images/map/step_7/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				top: -66px;
+				left: -14px;
+			}
+		}
+		&.step_8{
+			width: 449px;
+			height: 330px;
+			top: 1079px;
+			left: 133px;
+			padding: 10px 0 0 38px;
+			.bg_step{
+				background: url(../images/map/step_8/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				bottom: -73px;
+				left: 47px;
+			}
+		}
+		&.step_9{
+			width: 454px;
+			height: 205px;
+			bottom: 158px;
+			left: 346px;
+			padding: 10px 0 0 60px;
+			.bg_step{
+				background: url(../images/map/step_9/bg.png) no-repeat;
+			}
+			.img_tower{
+				position: absolute;
+				bottom: -38px;
+				left: -135px;
+			}
 		}
 	}
 
