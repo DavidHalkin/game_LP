@@ -220,12 +220,12 @@
 		padding-bottom: 30px;
 		
 		.img_decor{
-			transform:none  !important;
-			background: red !important;
-			left: 50% !important;
-			right: auto !important;
-			top: 0 !important;
-			display: none; 
+			// transform:none  !important;
+			// background: red !important;
+			// left: 50% !important;
+			// right: auto !important;
+			// top: 0 !important;
+			// display: none; 
 		}
 	}
 }
@@ -234,7 +234,6 @@
 	width: 720px;
 	position: relative;
 	z-index: 3;
-	
 	*{
 		position: relative;
 		z-index: 1;
@@ -255,10 +254,17 @@
 	@media screen and (max-width: 1280px) {
 		width: 100% !important;
 		padding: 40px 15px 0 65px;
+
 		p{
 			font-size: 16px;
 			line-height: 30px;
 			margin-bottom: 30px;
+		}
+		.img_decor{
+			top: 0;
+			left: 50%;
+			right: auto !important;
+			transform:translateX(-50%) !important;
 		}
 	}
 }
