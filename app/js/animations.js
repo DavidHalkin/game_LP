@@ -1,4 +1,5 @@
 new RoadMap();
+controlAsideDecor();
 
 function RoadMap() {
 
@@ -15,5 +16,36 @@ function RoadMap() {
         if (progress >= 1) clearInterval(time);
 
     }, 16);
+
+}
+function controlAsideDecor() {
+
+    const BREAKPOINT = 1280;
+    const postItems = document.querySelectorAll('.post_item');
+
+    if (window.matchMedia(`(max-width: ${BREAKPOINT}px)`).matches) {
+        move('in');
+    } else {
+        move('out');
+    }
+
+    window.matchMedia(`(max-width: ${BREAKPOINT}px)`).onchange = condition => {
+        if (condition.matches) return move('in');
+        move('out');
+    }
+
+    function move(direction) {
+
+        postItems.forEach(item => {
+
+            const decor = item.querySelector('.img_decor');
+            let textCont = item.querySelector('.text_cont');
+
+            if (direction === 'in') return textCont.appendChild(decor);
+            item.appendChild(decor);
+
+        });
+
+    }
 
 }
