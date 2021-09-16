@@ -186,13 +186,54 @@
 			}
 		}
 	}
-
-
-
-
 	@media screen and (max-width: 1280px) {
 		width: 100%;
 		height: auto;
 		background: none;
+		svg,.paint_part,.bg_step,.img_item{display: none !important;}
+		.txt_part{
+			padding: 0 20px 50px;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		[class *= "step_"],.txt_part{
+			position: static;
+			height: auto !important;
+		}
+		[class *= "step_"]{
+			width: 100%;
+			max-width: 33.33%;
+			flex:0 0 33.33%;
+			padding: 10px 10px !important;
+			.line_decor{
+				margin-left: 0;
+				background: #fff;
+				width: 290px;
+				height: 5px;
+				background: url(../images/map/line_decor_mob.png) no-repeat;
+				background-size: cover;
+				width: 70%;
+				@media screen and (max-width: 800px)  {
+					width: 290px;
+				}
+			}
+			h4{
+				color: #fff;
+				padding-left: 20px;
+				text-shadow:0 0 20px  rgba(#fff,.7);
+			}
+			p{
+				font-size: 18px;
+				line-height: 20px;
+				color: #ececec;
+				br{display: none;}
+			}
+			@media screen and (max-width: 800px) {
+				max-width: 100%;
+				flex:0 0 100%;
+				padding-left: 0 !important;
+				padding-bottom: 0 !important;
+			}
+		}
 	}
 }
