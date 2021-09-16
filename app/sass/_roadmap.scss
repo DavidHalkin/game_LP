@@ -1,7 +1,58 @@
-.roadmap_section{
+.road_map{
 	width: 1280px;
 	height: 1920px;
 	background: url(../images/map/map_bg.webp) no-repeat;
+	position: relative;
+	.paint_part{
+		background: rgba(red,.05);
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	.txt_part{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+	}
+	[class *= "step_"]{
+		color: #171717;
+		margin-left: 50%;
+		+ [class *= "step_"]{
+			margin-top: 100px;
+		}
+		h4{
+			font-size: 30px;
+			line-height: 32px;
+			font-weight: 600;
+			margin-bottom: 3px;
+		}
+		p{
+			font-size: 18px;
+			line-height: 20px;
+			font-weight: 400;
+			margin-bottom: 20px;
+		}
+		.line_decor{
+			margin-bottom: 20px;
+			width: 307px;
+			height: 5px;
+			background: url(../images/map/line_decor.png) no-repeat;
+			background-size: cover;
+		}
+		&.step_1{
+			width: 506px;
+			height: 227px;
+			background: url(../images/map/step_1/bg.png) no-repeat;
+		}
+	}
+
+
+
+
 	@media screen and (max-width: 1280px) {
 		width: 100%;
 		height: auto;
