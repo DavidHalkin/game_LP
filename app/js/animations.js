@@ -12,8 +12,8 @@ function RoadMap() {
         const maskLength = pathLength * (1 - progress);
         mask.setAttribute('stroke-dashoffset', maskLength);
         progress += 0.001;
-        if(progress >= 1) clearInterval(time);
-        
+        if (progress >= 1) clearInterval(time);
+
     }, 16);
 
 }
