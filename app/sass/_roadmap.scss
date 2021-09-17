@@ -153,6 +153,42 @@
 			bottom: 198px;
 			left: 226px;
 		}
+		.img_tower_1{
+			top: 216px;
+			left: 168px;
+		}
+		.img_tower_2{
+			top: 267px;
+			left: 673px;
+		}
+		.img_tower_3{
+			top: 610px;
+			left: 1031px;
+		}
+		.img_tower_4{
+			top: 467px;
+			left: 520px;
+		}
+		.img_tower_5{
+			top: 881px;
+			left: 179px;
+		}
+		.img_tower_6{
+			top: 894px;
+			right: 193px;
+		}
+		.img_tower_7{
+			top: 1233px;
+			right: 493px;
+		}
+		.img_tower_8{
+			top: 1406px;
+			left: 180px;
+		}
+		.img_tower_9{
+			bottom: 120px;
+			left: 211px;
+		}
 	}
 	.txt_part{
 		position: absolute;
@@ -164,8 +200,8 @@
 	[class *= "step_"]{
 		color: #171717;
 		position: absolute;
-		// mask:url(../images/map/splash-mask.webp) 50% 50% no-repeat;
-		// mask-size:0 0;
+		mask:url(../images/map/splash-mask.webp) 50% 50% no-repeat;
+		mask-size:0 0;
 		.bg_step{
 			width: 100%;
 			height: 100%;
