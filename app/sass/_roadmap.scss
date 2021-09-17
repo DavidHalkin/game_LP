@@ -164,6 +164,8 @@
 	[class *= "step_"]{
 		color: #171717;
 		position: absolute;
+		mask:url(../images/map/splash-mask.webp) 50% 50% no-repeat;
+		mask-size:0 0;
 		.bg_step{
 			width: 100%;
 			height: 100%;
