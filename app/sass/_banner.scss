@@ -1,11 +1,22 @@
+body{
+	background: #0c0c0c;
+}
 .hero_block{
-	min-height: 100vh;
-	padding: 100px 10px;
+	height: 100vh;
+	width: 100%;
+	// padding: 100px 10px;
 	font-family: 'IM Fell English SC', serif;
 	position: relative;
 	.txt_part{
 		position: relative;
-		z-index: 1;
+		z-index: 4;
+		
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+
+		// display: none;
 	}
 	h1{
 		color: #1f1f1f;
@@ -21,27 +32,116 @@
 	}
 	.banner_anim{
 		position: absolute;
-		top: 0;
 		bottom: 0;
-		left: 0;
-		right: 0;
+		left: 50%;
+		transform:translateX(-50%);
 		width: 100%;
-		height: 100%;
+		height: calc(100vw * 0.6525);
+		height: calc(100vw * 0.56);
+		// height: calc(100vh * 1.777);
+		// height: 100vh;
+		overflow: hidden;
+		@media (max-aspect-ratio: 16/9) {
+			height: 100vh;
+			width:  calc(100vh * 1.777);
+			&:before{
+				content: "aspect-ratio";
+				width: 150px;
+				height: 150px;
+				background: green;
+				top: 50%;
+				left: 50%;
+				position: fixed;
+				z-index: 100;
+			}
+			@media screen and (max-width:600px) {
+				&:after{
+					background: red;
+				}
+			}
+		}
 	}
 	.link{
 		margin-top: 23px;
 		position: relative;
 		z-index: 20;
 	}
-}
-.background{
 	img{
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		display: block;
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
+		// display: none;
 	}
+}
+.mountains{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+}
+.town{
+	position: absolute;
+	right: 5%;
+	bottom: 23%;
+	max-width: 53%;
+}
+.camp{
+	position: absolute;
+	bottom: 0;
+	left: 0.5%;
+	max-width: 78.5%;
+}
+.templar{
+	position: absolute;
+	bottom: 0;
+	left: -2.6%;
+	max-width: 28%;
+	@media screen and (max-width: 600px) {
+		left: 14%;
+	}
+}
+.templarhand{
+	position: absolute;
+	bottom: 0;
+	left: 19%;
+	max-width: 18.3%;
+	@media screen and (max-width: 600px) {
+		left: 36%;
+	}
+}
+.merc{
+	position: absolute;
+	bottom: 0;
+	right: -1.8%;
+	max-width: 30.1%;
+	@media screen and (max-width: 600px) {
+		right: 17%;
+	}
+}
+.merchand{
+	position: absolute;
+	bottom: 9%;
+	right: -0.8%;
+	max-width: 18%;
+	@media screen and (max-width: 600px) {
+		right: 20%;
+	}
+}
+.clouds1{
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 80%;
+}
+.clouds2{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 0;
+	width: 60%;
+}
+.clouds3{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 40%;
 }

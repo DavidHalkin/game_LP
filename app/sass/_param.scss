@@ -168,17 +168,28 @@ h1,h2,h3{
 .view_back{
 	height: 600px;
 	width: 100%;
-	background: url(../images/back.jpg) no-repeat 50% 50%;
-	background-attachment: fixed;
-	background-size: cover;
-	position: relative;
-	z-index: 1;
+	// background: url(../images/back.jpg) no-repeat 50% 50%;
+	// background-attachment: fixed;
+	// background-size: cover;
+	// position: relative;
+	// z-index: 1;
+	// img{
+		
+	// }
 	@media screen and (max-width: 1280px){
 		height: 300px;
 	}
 
 }
-
+.back_image{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	object-fit:cover;
+}
 .hr_mob{
 	width: 200px;
 	height: 13px;
