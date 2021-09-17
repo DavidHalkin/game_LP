@@ -19,17 +19,29 @@
 			line-height: 48px;
 		}
 	}
-	.bg_img{
+	.banner_anim{
 		position: absolute;
 		top: 0;
+		bottom: 0;
 		left: 0;
+		right: 0;
 		width: 100%;
 		height: 100%;
-		object-fit:cover;
 	}
 	.link{
 		margin-top: 23px;
 		position: relative;
 		z-index: 20;
+	}
+}
+.background{
+	img{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 }
