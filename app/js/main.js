@@ -29,8 +29,6 @@ function mapReveal() {
 	animateTextBlocks(textBlocks);
 	animateArtwork(artwork);
 
-	// setTimeout(splashReveal, 1000);
-
 	function updateOnScroll() {
 
 		window.addEventListener('scroll', handleScroll);
@@ -58,8 +56,7 @@ function mapReveal() {
 
 		elements.forEach(elem => {
 
-			elem.style.setProperty('-webkit-mask-size', '0px 0px');
-			elem.style.setProperty('mask-size', '0px 0px');
+			elem.style.cssText = '-webkit-mask-size: 0px 0px; mask-size: 0px 0px';
 
 			const mark = +elem.dataset.mark;
 
@@ -75,8 +72,6 @@ function mapReveal() {
 
 		function revealTextBlock(elem) {
 
-			// const bg = document.querySelector('.step_1');
-
 			let steps = 0;
 			const MAX_SIZE = 2000;
 
@@ -86,16 +81,11 @@ function mapReveal() {
 				value = easeOutCirc(steps / MAX_SIZE);
 				const size = MAX_SIZE * value;
 
-				elem.style.setProperty('-webkit-mask-size', `${size}px ${size}px`);
-				elem.style.setProperty('mask-size', `${size}px ${size}px`);
+				elem.style.cssText = `-webkit-mask-size: ${size}px; mask-size: ${size}px`;
 
 				if (size >= MAX_SIZE) clearInterval(time);
 
 			}, 16);
-
-			function easeOutCirc(x) {
-				return Math.sqrt(1 - Math.pow(x - 1, 2));
-			}
 
 		}
 
@@ -200,7 +190,6 @@ function mapReveal() {
 		// }, 16);
 
 	}
-
 
 }
 function controlAsideDecor() {
