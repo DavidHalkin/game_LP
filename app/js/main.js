@@ -9,6 +9,234 @@ $('.btn_mob_js').onclick = event => {
 	event.target.classList.toggle('opened');
 };
 
+if ($('#roadmap')) mapReveal();
+if ($('.img_decor')) controlAsideDecor();
+
+function mapReveal() {
+
+	const SCREEN_MARGIN = 300;
+	const MAP_SELECTOR = '#roadmap';
+	const MAP_START = getMapStart();
+	const ROUTE_LENGTH = 5280;
+	const MAP_HEIGHT = 1920;
+
+	const map = $(MAP_SELECTOR);
+	const textBlocks = $$('[class *= "step_"]');
+	const artwork = Array.from($('.paint_part').children);
+
+	new Route();
+	updateOnScroll();
+	animateTextBlocks(textBlocks);
+	animateArtwork(artwork);
+
+	// setTimeout(splashReveal, 1000);
+
+	function updateOnScroll() {
+
+		window.addEventListener('scroll', handleScroll);
+
+		function handleScroll() {
+
+			const scrollTop = document.documentElement.scrollTop;
+
+			if (scrollTop < ROUTE_LENGTH || scrollTop > ROUTE_LENGTH + MAP_HEIGHT) return;
+
+			const shiftBottomMargin = scrollTop + window.innerHeight - SCREEN_MARGIN;
+			const progress = (shiftBottomMargin - MAP_START) / MAP_HEIGHT;
+
+			const event = new CustomEvent('progress-update', { detail: progress });
+			map.dispatchEvent(event);
+
+		}
+
+	}
+	function getMapStart() {
+		const target = document.querySelector(MAP_SELECTOR);
+		return target.getBoundingClientRect().top + document.documentElement.scrollTop;
+	}
+	function animateTextBlocks(elements) {
+
+		elements.forEach(elem => {
+
+			elem.style.setProperty('-webkit-mask-size', '0px 0px');
+			elem.style.setProperty('mask-size', '0px 0px');
+
+			const mark = +elem.dataset.mark;
+
+			const handleEvent = function(event) {
+				if (event.detail < mark) return;
+				map.removeEventListener('progress-update', handleEvent);
+				revealTextBlock(elem);
+			};
+
+			map.addEventListener('progress-update', handleEvent);
+
+		});
+
+		function revealTextBlock(elem) {
+
+			// const bg = document.querySelector('.step_1');
+
+			let steps = 0;
+			const MAX_SIZE = 2000;
+
+			const time = setInterval(() => {
+
+				steps += 1;
+				value = easeOutCirc(steps / MAX_SIZE);
+				const size = MAX_SIZE * value;
+
+				elem.style.setProperty('-webkit-mask-size', `${size}px ${size}px`);
+				elem.style.setProperty('mask-size', `${size}px ${size}px`);
+
+				if (size >= MAX_SIZE) clearInterval(time);
+
+			}, 16);
+
+			function easeOutCirc(x) {
+				return Math.sqrt(1 - Math.pow(x - 1, 2));
+			}
+
+		}
+
+	}
+	function animateArtwork(elements) {
+
+		elements.forEach(element => {
+
+			element.classList.add('hidden');
+
+			const mark = +element.dataset.mark;
+
+			const handleEvent = function(event) {
+				if (event.detail < mark) return;
+				map.removeEventListener('progress-update', handleEvent);
+				element.classList.remove('hidden');
+			};
+
+			map.addEventListener('progress-update', handleEvent);
+
+		});
+
+	}
+	function Route() {
+
+		const mask = document.querySelector('#pathmask');
+
+		let overallProgress = 0;
+		let startProgress = 0;
+		const DURATION = 2000;
+		const FRAME_DURATION = 10;
+		let timeStep = FRAME_DURATION;
+		const totalAnimationSteps = DURATION / timeStep;
+		let animating = false;
+		let time;
+
+		map.addEventListener('progress-update', handleEvent);
+
+		function handleEvent(event) {
+
+			const range = {
+				start: 0,
+				end: 0.85
+			};
+			const progress = event.detail;
+			let adjustedProgress = (progress - range.start) / (range.end - range.start);
+			if (adjustedProgress > 1) adjustedProgress = 1;
+
+			// timer
+			// let timePassed = 0;
+			// let animationProgress = 0;
+			// const animationRange = adjustedProgress - startProgress;
+			// const animationRangeStep = animationRange / totalAnimationSteps;
+			//
+			// if (animating) {
+			// 	animate();
+			// } else {
+			// 	time = setInterval(animate, FRAME_DURATION);
+			// 	startProgress = adjustedProgress;
+			// 	animating = true;
+			// }
+			//
+			// startProgress = adjustedProgress;
+
+			if (adjustedProgress > overallProgress) {
+				overallProgress = adjustedProgress;
+				const maskLength = ROUTE_LENGTH * (1 - adjustedProgress);
+				mask.setAttribute('stroke-dashoffset', maskLength);
+			}
+
+			if (event.detail >= 0.9) {
+				mask.setAttribute('stroke-dashoffset', 0);
+				map.removeEventListener('progress-update', handleEvent);
+			}
+
+			function animate() {
+
+				timePassed += timeStep;
+				animationProgress += animationRangeStep;
+				const animationValue = easeInOutCubic(animationProgress / animationRange);
+				const value = startProgress + animationRange * animationValue;
+
+				const maskLength = ROUTE_LENGTH * (1 - value);
+				mask.setAttribute('stroke-dashoffset', maskLength);
+
+				if (timePassed >= DURATION) {
+					animating = false;
+					clearInterval(time);
+				}
+
+			}
+
+		}
+
+		// let time = setInterval(() => {
+		//
+		// 	const maskLength = ROUTE_LENGTH * (1 - progress);
+		// 	mask.setAttribute('stroke-dashoffset', maskLength);
+		// 	progress += 0.001;
+		// 	if (progress >= 1) clearInterval(time);
+		//
+		// }, 16);
+
+	}
+
+
+}
+function controlAsideDecor() {
+
+	const BREAKPOINT = 1280;
+	const postItems = $$('.post_item');
+
+	if (window.matchMedia(`(max-width: ${BREAKPOINT}px)`).matches) {
+		move('in');
+	} else {
+		move('out');
+	}
+
+	window.matchMedia(`(max-width: ${BREAKPOINT}px)`).onchange = condition => {
+		if (condition.matches) return move('in');
+		move('out');
+	}
+
+	function move(direction) {
+
+		postItems.forEach(item => {
+
+			const decor = item.querySelector('.img_decor');
+			let textCont = item.querySelector('.text_cont');
+
+			if (direction === 'in') return textCont.appendChild(decor);
+			item.appendChild(decor);
+
+		});
+
+	}
+
+}
 function $(selector) {
 	return document.querySelector(selector);
+}
+function $$(selector) {
+	return document.querySelectorAll(selector);
 }
