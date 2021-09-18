@@ -9,8 +9,9 @@ $('.btn_mob_js').onclick = event => {
 	event.target.classList.toggle('opened');
 };
 
-if ($('#roadmap')) mapReveal();
+if ($('#roadmap') && window.innerWidth > 1280) mapReveal();
 if ($('.img_decor')) controlAsideDecor();
+if ($('.img_block') && window.innerWidth > 1280) revealImages();
 
 function mapReveal() {
 
@@ -223,9 +224,89 @@ function controlAsideDecor() {
 	}
 
 }
+function revealImages() {
+
+	const posts = $$('.post_item');
+
+	const options = {
+		root: null,
+		rootMargin: '0px 0px -100px 0px',
+		threshold: 1
+	}
+
+	let callback = (entries, observer) => {
+		entries.forEach(entry => {
+
+			if (entry.isIntersecting) {
+
+				iObserver.unobserve(entry.target)
+
+				const contentBlock = entry.target.parentElement.parentElement;
+
+				let image;
+
+				if (contentBlock.parentElement.classList.contains('token_section')) {
+					image = contentBlock.parentElement.querySelector('.img_block');
+				} else {
+					image = contentBlock.querySelector('.img_block');
+				}
+
+				if (image) {
+
+					let steps = 0;
+					const MAX_SIZE = 6000;
+
+					const time = setInterval(() => {
+
+						steps += 5;
+						value = easeOutExpo(steps / MAX_SIZE);
+						const size = MAX_SIZE * value;
+
+						image.style.cssText = `-webkit-mask-size: ${size}px; mask-size: ${size}px`;
+
+						if (size >= MAX_SIZE) clearInterval(time);
+
+					}, 16);
+
+				}
+
+			}
+
+		});
+	};
+
+	const iObserver = new IntersectionObserver(callback, options);
+
+	posts.forEach(post => {
+
+		iObserver.observe(post.querySelector('.text_cont > p:first-child'));
+
+		let image;
+
+		if (post.parentElement.classList.contains('token_section')) {
+			image = post.parentElement.querySelector('.img_block');
+		} else {
+			image = post.querySelector('.img_block');
+		}
+
+		image.style.cssText = '-webkit-mask-size: 0px; mask-size: 0px';
+
+	});
+
+}
 function $(selector) {
 	return document.querySelector(selector);
 }
 function $$(selector) {
 	return document.querySelectorAll(selector);
+}
+function easeOutCirc(x) {
+
+	return Math.sqrt(1 - Math.pow(x - 1, 2));
+
+}
+function easeOutExpo(x) {
+
+	return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+
 }

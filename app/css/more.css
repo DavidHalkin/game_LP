@@ -1,0 +1,20 @@
+.paint_part > img {
+    opacity: 1;
+    transition: opacity 0.8s ease-out;
+}
+.paint_part > img.hidden {
+    opacity: 0;
+    transition: opacity 0s;
+}
+[class *= "step_"], #roadmap > svg {
+     transform: translate3d(0, 0, 0);
+     transform-style: preserve-3d;
+}
+.img_block {
+    transform-style: preserve-3d;
+    will-change: auto;
+    -webkit-mask:url(../images/map/splash-mask.png) center no-repeat;
+    mask:url(../images/map/splash-mask.png) center no-repeat;
+    -webkit-mask-size: 6000px;
+    mask-size: 6000px;
+}

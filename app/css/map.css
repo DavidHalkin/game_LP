@@ -1,8 +1,0 @@
-.paint_part > img {
-    opacity: 1;
-    transition: opacity 0.8s ease-out;
-}
-.paint_part > img.hidden {
-    opacity: 0;
-    transition: opacity 0s;
-}
