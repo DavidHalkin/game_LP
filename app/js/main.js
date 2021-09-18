@@ -12,6 +12,7 @@ $('.btn_mob_js').onclick = event => {
 if ($('#roadmap') && window.innerWidth > 1280) mapReveal();
 if ($('.img_decor')) controlAsideDecor();
 if ($('.img_block') && window.innerWidth > 1280) revealImages();
+if ($('.hero_block')) parallax();
 
 function mapReveal() {
 
@@ -294,6 +295,78 @@ function revealImages() {
 	});
 
 }
+function parallax() {
+
+	const content = $('.shadow_box');
+	const banner = $('.banner_anim');
+	const mountains = $('.banner_anim .shadow_box');
+	const clouds1 = $('.banner_anim .clouds1');
+	const clouds2 = $('.banner_anim .clouds2');
+	const clouds3 = $('.banner_anim .clouds3');
+	const town = $('.banner_anim .town');
+	const camp = $('.banner_anim .camp');
+	const templar = $('.banner_anim .templar');
+	const templarhand = $('.banner_anim .templarhand');
+	const merch = $('.banner_anim .merc');
+	const merchhand = $('.banner_anim .merchand');
+	const characters = $('.banner_anim .holder_persons');
+
+	const SPEED = 0.4;
+
+	gsap.set(templarhand, {
+		transformOrigin: '0% 50%'
+	});
+	gsap.to(templarhand, {
+		rotation: 3,
+		repeat: -1,
+		yoyo: true,
+		duration: 3,
+		ease: 'power1.inOut'
+	});
+	gsap.set(merchhand, {
+		transformOrigin: '90% 5%'
+	});
+	gsap.to(merchhand, {
+		rotation: 5,
+		repeat: -1,
+		yoyo: true,
+		duration: 3,
+		ease: 'power1.inOut'
+	});
+
+	document.addEventListener('scroll', () => {
+
+		const scrollTop = document.documentElement.scrollTop;
+
+		if (scrollTop < window.innerHeight) {
+			banner.style.transform = `translate3D(-50%, ${scrollTop * SPEED}px, 0)`;
+
+			gsap.set(target, {
+			    y: -templarhand * 0.2
+			});
+
+			templar.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
+			templarhand.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
+
+			gsap.set(target, {
+			    y: -merchhand * 0.2
+			});
+
+			merch.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
+			merchhand.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
+
+			camp.style.transform = `translate3D(0, ${-scrollTop * 0.085}px, 0)`;
+
+			clouds1.style.transform = `translate3D(0, ${-scrollTop * 0.075}px, 0)`;
+			clouds2.style.transform = `translate3D(0, ${-scrollTop * 0.050}px, 0)`;
+			clouds3.style.transform = `translate3D(0, ${-scrollTop * 0.025}px, 0)`;
+
+		}
+
+	});
+
+}
+
 function $(selector) {
 	return document.querySelector(selector);
 }
