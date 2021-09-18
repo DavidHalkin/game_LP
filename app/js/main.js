@@ -13,6 +13,7 @@ if ($('#roadmap') && window.innerWidth > 1280) mapReveal();
 if ($('.img_decor')) controlAsideDecor();
 if ($('.img_block') && window.innerWidth > 1280) revealImages();
 if ($('.hero_block')) parallax();
+if ($('.main_nav')) smoothAutoScroll();
 
 function mapReveal() {
 
@@ -342,14 +343,14 @@ function parallax() {
 			banner.style.transform = `translate3D(-50%, ${scrollTop * SPEED}px, 0)`;
 
 			gsap.set(templarhand, {
-			    y: -scrollTop * 0.2
+				y: -scrollTop * 0.2
 			});
 
 			templar.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
 			templarhand.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
 
 			gsap.set(merchhand, {
-			    y: -scrollTop * 0.2
+				y: -scrollTop * 0.2
 			});
 
 			merch.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
@@ -366,6 +367,31 @@ function parallax() {
 
 		}
 
+	});
+
+}
+function smoothAutoScroll() {
+
+	const items = Array.from($('.main_nav').children);
+
+	items.forEach(item => {
+		item.onclick = event => {
+
+			event.preventDefault();
+
+			const href = item.firstElementChild.getAttribute('href');
+
+			gsap.to(window, {
+				duration: 1.5,
+				scrollTo: {
+					y: href,
+					offsetY: 160
+				},
+				ease: 'power3.inOut'
+			});
+			// console.log(new URL(item.firstElementChild.href));
+
+		};
 	});
 
 }
