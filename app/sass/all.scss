@@ -172,7 +172,7 @@
 		}
 	}
 	&.post_item_inverse{
-		justify-content:end;
+		justify-content:flex-end;
 		.img_decor{
 			right: auto;
 			left: 100%;
@@ -208,10 +208,11 @@
 .text_cont{
 	padding: 70px 80px 0;
 	width: 720px;
-	max-width: 720px;
-	flex:0 0 720px;
 	position: relative;
 	z-index: 3;
+	.post_item_inverse & {
+		// margin-left: auto;
+	}
 	*{
 		position: relative;
 		z-index: 1;
