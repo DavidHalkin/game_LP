@@ -13,7 +13,10 @@
 	// position: relative;
 	// z-index: 2000;
 }
-
+.shadow_box{
+	position: relative;
+	z-index: 4;
+}
 .part_bg{
 	background: url(../images/body_bg.png) repeat;
 	position: relative;
@@ -205,6 +208,8 @@
 .text_cont{
 	padding: 70px 80px 0;
 	width: 720px;
+	max-width: 720px;
+	flex:0 0 720px;
 	position: relative;
 	z-index: 3;
 	*{
