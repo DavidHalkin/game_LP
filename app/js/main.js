@@ -379,6 +379,8 @@ function smoothAutoScroll() {
 
 			event.preventDefault();
 
+			closeMobileMenu();
+
 			const href = item.firstElementChild.getAttribute('href');
 
 			gsap.to(window, {
@@ -389,10 +391,14 @@ function smoothAutoScroll() {
 				},
 				ease: 'power3.inOut'
 			});
-			// console.log(new URL(item.firstElementChild.href));
 
 		};
 	});
+
+	function closeMobileMenu() {
+		$('.btn_mob_js').classList.remove('opened');
+		$('.nav_holder_js').classList.remove('opened');
+	}
 
 }
 
