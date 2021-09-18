@@ -1,0 +1,32 @@
+.inner_page{
+	background: url(../images/body_bg.png) repeat;
+	.part_bg{
+		&:after,&:before{
+			content: none;
+		}
+	}
+	.part_bg{
+		padding-top: 160px;
+		background: none;
+	}
+}
+.text_cont{
+	.col_6{
+		max-width: 50%;
+		flex:0 0 50%;
+		padding-right: 43px;
+		+.col_6{
+			padding-right: 0;
+
+			padding-left: 43px;
+		}
+	}
+	ul{
+		li{
+			padding-left: 36px;
+		}
+	}
+}
+.w-100{
+	width: 100% !important;
+}

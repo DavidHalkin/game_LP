@@ -4,13 +4,14 @@
 '_header',
 '_roadmap',
 '_banner',
+'_inner',
 '_footer.scss',
 '_fonts.scss';
 
 .wrapper{
 	overflow: hidden;
-	position: relative;
-	z-index: 2000;
+	// position: relative;
+	// z-index: 2000;
 }
 
 .part_bg{
@@ -109,6 +110,8 @@
 	right: 0;
 	transform:translateX(40%);
 	z-index: 1;
+	// max-width: 45%;
+	max-width: 850px;
 	.post_item_inverse &{
 		right: auto;
 		left: 0;
