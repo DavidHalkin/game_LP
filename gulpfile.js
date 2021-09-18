@@ -96,8 +96,8 @@ gulp.task('sprite', function () {
 //библиотеки js
 gulp.task('scripts', function() {
 	return gulp.src([ // Берем все необходимые библиотеки
-		'bower_components/jquery/dist/jquery.min.js',
-		'bower_components/owl.carousel/dist/owl.carousel.min.js',
+		// 'bower_components/jquery/dist/jquery.min.js',
+		// 'bower_components/owl.carousel/dist/owl.carousel.min.js',
 		// 'node_modules/ion-rangeslider/js/ion.rangeSlider.min.js',
 		// 'node_modules/@amcharts/amcharts4/core.js',
 		// 'node_modules/@amcharts/amcharts4/charts.js',
@@ -113,8 +113,8 @@ gulp.task('css-libs', ['sass'], function() {
 	return gulp.src([ // Берем все необходимые библиотеки
 		// 'bower_components/fontawesome/css/all.min.css',
 		
-		'bower_components/owl.carousel/dist/assets/owl.theme.green.css',
-		'bower_components/owl.carousel/dist/assets/owl.carousel.css',
+		// 'bower_components/owl.carousel/dist/assets/owl.theme.green.css',
+		// 'bower_components/owl.carousel/dist/assets/owl.carousel.css',
 		// 'node_modules/ion-rangeslider/css/ion.rangeSlider.min.css',
 		// 'bower_components/datatables.net-dt/css/jquery.dataTables.min.css',
 		// 'bower_components/bootstrap-select/dist/css/bootstrap-select.min.css',
