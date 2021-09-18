@@ -322,7 +322,7 @@
 		flex-grow: 1;
 		max-width: 100%;
 		position: relative;
-		text-shadow: 0 0 20px rgba(255,255,255,0.7);
+		text-shadow: 0 0 20px rgba(255,255,255,0.5);
 		&:after{
 			content: "";
 			width: 300px;
@@ -348,7 +348,7 @@
 	color: #ffb400 !important;
 }
 .title.text_warning{
-	text-shadow: 0 0 20px rgba(#ffb400,0.7) !important;
+	text-shadow: 0 0 20px rgba(#ffb400,0.5) !important;
 }
 .add_decor_title{
 	@media screen and (min-width: 987px)  {
