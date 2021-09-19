@@ -209,6 +209,7 @@ body{
 			}
 		}
 		.merchand,.coin{
+			
 			// max-width: 120px;
 			width: calc(120px * 1.5);
 			// right: -20px;
@@ -225,7 +226,18 @@ body{
 	}
 	
 }
+// .merchand{
+// 	// background: green;
+// 	border: 1px solid green;
+// }
 .coin{
-	background: rgba(red,.3);
-	height: 38%;
+	// background: rgba(#000,.6) !important;
+	// border: 1px solid red;
+	height: 38.6%;
+	@media screen and (max-width: 1000px)  {
+		height: 215px;
+		@media screen and (max-width: 500px) {
+			height: 142px;
+		}
+	}
 }
