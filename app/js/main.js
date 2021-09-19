@@ -297,6 +297,7 @@ function parallax() {
 	});
 
 	animteCoinGlow();
+	animateClouds();
 
 	document.addEventListener('scroll', () => {
 
@@ -304,30 +305,25 @@ function parallax() {
 
 		if (scrollTop < window.innerHeight) {
 
-			banner.style.transform = `translate3D(-50%, ${scrollTop * SPEED}px, 0)`;
+			gsap.set(banner, { y: scrollTop * SPEED });
 
-			gsap.set(templarhand, {
-				y: -scrollTop * 0.2
-			});
+			gsap.set([
+				templar,
+				templarhand,
+				merch,
+				merchhand,
+				coin
+			], { y: -scrollTop * 0.2 });
 
-			templar.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
-			templarhand.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
+			gsap.set(clouds1, { y: -scrollTop * 0.025 });
+			gsap.set(clouds2, { y: -scrollTop * 0.1 });
+			gsap.set(clouds3, { y: scrollTop * 0.2 });
 
-			gsap.set([merchhand, coin], {
-				y: -scrollTop * 0.2
-			});
-
-			merch.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
-			merchhand.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
-			coin.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
-
-			clouds1.style.transform = `translate3D(0, ${-scrollTop * 0.025}px, 0)`;
-			clouds2.style.transform = `translate3D(0, ${-scrollTop * 0.1}px, 0)`;
-			clouds3.style.transform = `translate3D(0, ${scrollTop * 0.2}px, 0)`;
-
-			mountains.style.transform = `translate3D(0, ${scrollTop * 0.1}px, 0)`;
-			camp.style.transform = `translate3D(0, ${scrollTop * 0.1}px, 0)`;
-			town.style.transform = `translate3D(0, ${scrollTop * 0.1}px, 0)`;
+			gsap.set([
+				mountains,
+				camp,
+				town
+			], { y: scrollTop * 0.1 });
 
 		}
 
@@ -355,6 +351,65 @@ function parallax() {
 		// 	yoyo: true,
 		// 	ease: 'power1.inOut'
 		// });
+
+	}
+	function animateClouds() {
+
+		gsap.to(clouds3, {
+			duration: 10,
+			x: '5%',
+			autoAlpha: 0,
+			repeat: -1,
+			ease: 'none'
+		});
+		gsap.to(clouds2, {
+			duration: 40,
+			x: '5%',
+			autoAlpha: 0,
+			repeat: -1,
+			ease: 'none'
+		});
+		gsap.to(clouds1, {
+			duration: 20,
+			x: '5%',
+			autoAlpha: 0,
+			repeat: -1,
+			ease: 'none'
+		});
+
+		const cloned1 = clouds1.cloneNode(true);
+		const cloned2 = clouds2.cloneNode(true);
+		const cloned3 = clouds3.cloneNode(true);
+		clouds1.insertAdjacentElement('afterend', cloned1);
+		clouds2.insertAdjacentElement('afterend', cloned2);
+		clouds3.insertAdjacentElement('afterend', cloned3);
+
+		gsap.set([cloned1, cloned2, cloned3], {
+			x: '-5%',
+			autoAlpha: 0
+		});
+
+		gsap.to(cloned1, {
+			duration: 20,
+			x: '0%',
+			autoAlpha: 1,
+			repeat: -1,
+			ease: 'none'
+		});
+		gsap.to(cloned2, {
+			duration: 40,
+			x: '0%',
+			autoAlpha: 1,
+			repeat: -1,
+			ease: 'none'
+		});
+		gsap.to(cloned3, {
+			duration: 10,
+			x: '0%',
+			autoAlpha: 1,
+			repeat: -1,
+			ease: 'none'
+		});
 
 	}
 

@@ -15,5 +15,17 @@
     height: 100%;
     width: 30%;
     background: linear-gradient(90deg, rgba(255,0,0,0) 0%, hsl(30, 100%, 60%) 35%, hsl(30, 100%, 60%) 65%, rgba(255,0,0,0) 100%);
-    /* background: linear-gradient(90deg, rgba(255,0,0,0) 15%, hsl(30, 100%, 70%) 35%, hsl(30, 100%, 70%) 65%, rgba(255,0,0,0) 85%); */
+}
+.clouds1 {
+    left: -11%;
+    width: 120%;
+}
+.clouds2 {
+    left: -20%;
+    bottom: 42%;
+    width: 120%;
+}
+.clouds3 {
+    left: -20%;
+    width: 155%;
 }
