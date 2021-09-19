@@ -94,7 +94,7 @@ body{
 	position: absolute;
 	bottom: 0;
 	left: -2.6%;
-	max-width: 28%;
+	width: 28%;
 	// @media screen and (max-width: 600px) {
 	// 	max-width: 50%;
 	// }
@@ -103,7 +103,7 @@ body{
 	position: absolute;
 	bottom: 0;
 	left: 19%;
-	max-width: 18.3%;
+	width: 18.3%;
 	// @media screen and (max-width: 600px) {
 	// 	// left: 36%;
 	// }
@@ -112,7 +112,7 @@ body{
 	position: absolute;
 	bottom: 0;
 	right: -1.8%;
-	max-width: 30.1%;
+	width: 30.1%;
 	// @media screen and (max-width: 600px) {
 	// 	right: 17%;
 	// }
@@ -121,7 +121,7 @@ body{
 	position: absolute;
 	bottom: 9%;
 	right: -0.8%;
-	max-width: 18%;
+	width: 18%;
 	// @media screen and (max-width: 600px) {
 	// 	right: 20%;
 	// }
@@ -165,56 +165,56 @@ body{
 		// z-index: 100;
 		.templar{
 			// max-width: 200px;
-			max-width: calc(200px * 1.5);
+			width: calc(200px * 1.5);
 			// left: -90px;
 			left: calc(-90px * 1.5);
 			@media screen and (max-width: 500px) {
-				max-width: calc(200px * 1.2);
+				width: calc(200px * 1.2);
 				left: calc(-90px * 1.2);
 				@media screen and (max-width: 400px) {
-					max-width: calc(200px * 1);
+					width: calc(200px * 1);
 					left: calc(-90px * 1);
 				}
 			}
 		}
 		.templarhand{
 			// max-width: 130px;
-			max-width: calc(130px * 1.5);
+			width: calc(130px * 1.5);
 			// left: 68px;
 			left: calc(68px * 1.5);
 			@media screen and (max-width: 500px) {
-				max-width: calc(130px * 1.2);
+				width: calc(130px * 1.2);
 				left: calc(68px * 1.2);
 				@media screen and (max-width: 400px) {
-					max-width: calc(130px * 1);
+					width: calc(130px * 1);
 					left: calc(68px * 1);
 				}
 			}
 		}
 		.merc{
 			// max-width: 220px;
-			max-width: calc(220px * 1.5);
+			width: calc(220px * 1.5);
 			// right: -65px;
 			right: calc(-65px * 1.5);
 			@media screen and (max-width: 500px) {
-				max-width: calc(220px * 1.2);
+				width: calc(220px * 1.2);
 				right: calc(-65px * 1.2);
 				@media screen and (max-width: 400px) {
-					max-width: calc(220px * 1);
+					width: calc(220px * 1);
 					right: calc(-65px * 1);
 				}
 			}
 		}
 		.merchand{
 			// max-width: 120px;
-			max-width: calc(120px * 1.5);
+			width: calc(120px * 1.5);
 			// right: -20px;
 			right: calc(-20px * 1.5);
 			@media screen and (max-width: 500px) {
-				max-width: calc(120px * 1.2);
+				width: calc(120px * 1.2);
 				right: calc(-20px * 1.2);
 				@media screen and (max-width: 500px) {
-					max-width: calc(120px * 1);
+					width: calc(120px * 1);
 					right: calc(-20px * 1);
 				}
 			}
