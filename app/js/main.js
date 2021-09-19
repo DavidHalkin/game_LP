@@ -271,6 +271,7 @@ function parallax() {
 	const merch = $('.banner_anim .merc');
 	const merchhand = $('.banner_anim .merchand');
 	const characters = $('.banner_anim .holder_persons');
+	const coin = $('.banner_anim .coin');
 
 	const SPEED = 0.4;
 
@@ -284,10 +285,10 @@ function parallax() {
 		duration: 3,
 		ease: 'power1.inOut'
 	});
-	gsap.set(merchhand, {
+	gsap.set([merchhand, coin], {
 		transformOrigin: '90% 5%'
 	});
-	gsap.to(merchhand, {
+	gsap.to([merchhand, coin], {
 		rotation: 5,
 		repeat: -1,
 		yoyo: true,
@@ -295,11 +296,14 @@ function parallax() {
 		ease: 'power1.inOut'
 	});
 
+	animteCoinGlow();
+
 	document.addEventListener('scroll', () => {
 
 		const scrollTop = document.documentElement.scrollTop;
 
 		if (scrollTop < window.innerHeight) {
+
 			banner.style.transform = `translate3D(-50%, ${scrollTop * SPEED}px, 0)`;
 
 			gsap.set(templarhand, {
@@ -309,25 +313,50 @@ function parallax() {
 			templar.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
 			templarhand.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
 
-			gsap.set(merchhand, {
+			gsap.set([merchhand, coin], {
 				y: -scrollTop * 0.2
 			});
 
 			merch.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
 			merchhand.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
-
-			camp.style.transform = `translate3D(0, ${-scrollTop * 0}px, 0)`;
+			coin.style.transform = `translate3D(0, ${-scrollTop * 0.2}px, 0)`;
 
 			clouds1.style.transform = `translate3D(0, ${-scrollTop * 0.025}px, 0)`;
 			clouds2.style.transform = `translate3D(0, ${-scrollTop * 0.1}px, 0)`;
 			clouds3.style.transform = `translate3D(0, ${scrollTop * 0.2}px, 0)`;
 
-			mountains.style.transform = `translate3D(0, ${scrollTop * .1}px, 0)`;
-			town.style.transform = `translate3D(0, ${scrollTop * .1}px, 0)`;
+			mountains.style.transform = `translate3D(0, ${scrollTop * 0.1}px, 0)`;
+			camp.style.transform = `translate3D(0, ${scrollTop * 0.1}px, 0)`;
+			town.style.transform = `translate3D(0, ${scrollTop * 0.1}px, 0)`;
 
 		}
 
 	});
+
+	function animteCoinGlow() {
+
+		gsap.set('.coin .glow', {
+			rotate: 40
+		});
+		gsap.to('.coin .glow', {
+			duration: 3,
+			x: '350%',
+			repeat: -1
+		});
+
+		// gsap.set('.coin .glow', {
+		// 	rotate: 70
+		// });
+		// gsap.to('.coin .glow', {
+		// 	duration: 3,
+		// 	x: '50%',
+		// 	y: '15%',
+		// 	repeat: -1,
+		// 	yoyo: true,
+		// 	ease: 'power1.inOut'
+		// });
+
+	}
 
 }
 function smoothAutoScroll() {

@@ -1,0 +1,19 @@
+.coin {
+    background-color: hsla(40, 100%, 50%, 0.2);
+    -webkit-mask:url(../images/banner/coin-mask.png) 50% 50% no-repeat;
+    mask:url(../images/banner/coin-mask.png) 50% 50% no-repeat;
+    -webkit-mask-size:100% 100%;
+    mask-size:100% 100%;
+    mix-blend-mode: color-dodge;
+    overflow: hidden;
+}
+.coin .glow {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -25%;
+    height: 100%;
+    width: 30%;
+    background: linear-gradient(90deg, rgba(255,0,0,0) 0%, hsl(30, 100%, 60%) 35%, hsl(30, 100%, 60%) 65%, rgba(255,0,0,0) 100%);
+    /* background: linear-gradient(90deg, rgba(255,0,0,0) 15%, hsl(30, 100%, 70%) 35%, hsl(30, 100%, 70%) 65%, rgba(255,0,0,0) 85%); */
+}
