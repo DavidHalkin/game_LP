@@ -114,16 +114,13 @@ function mapReveal() {
 	}
 	function Route() {
 
-		const mask = document.querySelector('#pathmask');
-
+		const mask = document.querySelector('#pathmask').firstElementChild;
 		let overallProgress = 0;
-		let startProgress = 0;
-		const DURATION = 2000;
-		const FRAME_DURATION = 10;
-		let timeStep = FRAME_DURATION;
-		const totalAnimationSteps = DURATION / timeStep;
-		let animating = false;
-		let time;
+
+		gsap.set(mask, {
+			duration: 1,
+			attr: { ["stroke-dashoffset"]: ROUTE_LENGTH }
+		});
 
 		map.addEventListener('progress-update', handleEvent);
 
@@ -137,26 +134,15 @@ function mapReveal() {
 			let adjustedProgress = (progress - range.start) / (range.end - range.start);
 			if (adjustedProgress > 1) adjustedProgress = 1;
 
-			// timer
-			// let timePassed = 0;
-			// let animationProgress = 0;
-			// const animationRange = adjustedProgress - startProgress;
-			// const animationRangeStep = animationRange / totalAnimationSteps;
-			//
-			// if (animating) {
-			// 	animate();
-			// } else {
-			// 	time = setInterval(animate, FRAME_DURATION);
-			// 	startProgress = adjustedProgress;
-			// 	animating = true;
-			// }
-			//
-			// startProgress = adjustedProgress;
-
 			if (adjustedProgress > overallProgress) {
 				overallProgress = adjustedProgress;
+
 				const maskLength = ROUTE_LENGTH * (1 - adjustedProgress);
-				mask.setAttribute('stroke-dashoffset', maskLength);
+				gsap.to(mask, {
+					duration: 1,
+					attr: { ["stroke-dashoffset"]: maskLength },
+					ease: 'power2.out'
+				});
 			}
 
 			if (event.detail >= 0.9) {
@@ -164,33 +150,7 @@ function mapReveal() {
 				map.removeEventListener('progress-update', handleEvent);
 			}
 
-			function animate() {
-
-				timePassed += timeStep;
-				animationProgress += animationRangeStep;
-				const animationValue = easeInOutCubic(animationProgress / animationRange);
-				const value = startProgress + animationRange * animationValue;
-
-				const maskLength = ROUTE_LENGTH * (1 - value);
-				mask.setAttribute('stroke-dashoffset', maskLength);
-
-				if (timePassed >= DURATION) {
-					animating = false;
-					clearInterval(time);
-				}
-
-			}
-
 		}
-
-		// let time = setInterval(() => {
-		//
-		// 	const maskLength = ROUTE_LENGTH * (1 - progress);
-		// 	mask.setAttribute('stroke-dashoffset', maskLength);
-		// 	progress += 0.001;
-		// 	if (progress >= 1) clearInterval(time);
-		//
-		// }, 16);
 
 	}
 
