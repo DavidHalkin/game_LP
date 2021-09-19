@@ -426,3 +426,7 @@
     opacity: 0;
     transition: opacity 0s;
 }
+[class *= "step_"], #roadmap > svg {
+     transform: translate3d(0, 0, 0);
+     transform-style: preserve-3d;
+}

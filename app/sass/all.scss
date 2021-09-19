@@ -392,3 +392,9 @@
 		padding-top: 50px;
 	}
 }
+.img_block {
+    transform-style: preserve-3d;
+    will-change: auto;
+    mask:url(../images/map/splash-mask.png) center no-repeat;
+    mask-size: 6000px;
+}
