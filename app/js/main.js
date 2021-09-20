@@ -258,7 +258,6 @@ function revealImages() {
 }
 function parallax() {
 
-	const content = $('.shadow_box');
 	const banner = $('.banner_anim');
 	const mountains = $('.banner_anim .mountains');
 	const clouds1 = $('.banner_anim .clouds1');
@@ -270,8 +269,9 @@ function parallax() {
 	const templarhand = $('.banner_anim .templarhand');
 	const merch = $('.banner_anim .merc');
 	const merchhand = $('.banner_anim .merchand');
-	const characters = $('.banner_anim .holder_persons');
 	const coin = $('.banner_anim .coin');
+	const smokeCenter = $('.smoke.center');
+	const smokeAside = $('.smoke.aside');
 
 	const SPEED = 0.4;
 
@@ -322,7 +322,9 @@ function parallax() {
 			gsap.set([
 				mountains,
 				camp,
-				town
+				town,
+				smokeCenter,
+				smokeAside
 			], { y: scrollTop * 0.1 });
 
 		}
