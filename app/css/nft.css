@@ -1,0 +1,6 @@
+.slider ul li.active {
+    transition: width 0.5s cubic-bezier(0.2, 0, 0, 1), margin-top 0.5s cubic-bezier(0.2, 0, 0, 1);
+}
+.slider ul li {
+    transition: width 0.5s cubic-bezier(0.2, 0, 0, 1), margin-top 0.5s cubic-bezier(0.2, 0, 0, 1);
+}

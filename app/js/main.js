@@ -14,6 +14,7 @@ if ($('.img_decor')) controlAsideDecor();
 if ($('.img_block') && window.innerWidth > 1280) revealImages();
 if ($('.hero_block')) parallax();
 if ($('.main_nav')) smoothAutoScroll();
+if ($('.js_posters_gallery')) enableGalleries();
 
 function mapReveal() {
 
@@ -444,6 +445,117 @@ function smoothAutoScroll() {
 	function closeMobileMenu() {
 		$('.btn_mob_js').classList.remove('opened');
 		$('.nav_holder_js').classList.remove('opened');
+	}
+
+}
+function enableGalleries() {
+
+	const galleries = $$('.js_posters_gallery');
+	galleries.forEach(gallery => new Gallery(gallery));
+
+	function Gallery(root) {
+
+		const TRANSITION = 0.5; // posters swapping speed
+
+		const list = root.querySelector('.slider > ul');
+		const posters = Array.from(list.children);
+		const description = root.querySelector('.slider_title');
+
+		let previousActivePoster;
+
+		description.style.visibility = 'hidden';
+
+		posters.forEach((poster, i) => {
+
+			poster.onclick = event => {
+
+				event.preventDefault();
+
+				if (poster.classList.contains('active')) return openPopup(poster);
+
+				highlightPoster(poster, i);
+
+			};
+
+		});
+
+		function openPopup(poster) {
+
+			console.log('popup');
+
+		}
+		function highlightPoster(activePoster, index) {
+
+			let highlightedPosterExists = false;
+
+			posters.forEach(poster => {
+				if (poster.classList.contains('active')) highlightedPosterExists = true;
+				if (poster === activePoster) return poster.classList.add('active');
+				poster.classList.remove('active');
+			});
+
+			swapDescription();
+			shiftList();
+
+			previousActivePoster = activePoster;
+
+			function swapDescription() {
+
+				if (highlightedPosterExists) temporarityFixListHeight();
+
+				gsap.to(description, {
+					duration: TRANSITION / 4,
+					autoAlpha: 0
+				});
+
+				gsap.to(description, {
+					delay: TRANSITION / 2,
+					duration: TRANSITION / 4,
+					autoAlpha: 1
+				});
+
+			}
+			function temporarityFixListHeight() {
+
+				const listHeight = list.getBoundingClientRect().height;
+
+				list.style.height = listHeight + 'px';
+
+				setTimeout(() => {
+					list.style.height = 'auto';
+				}, TRANSITION * 1000);
+
+			}
+			function shiftList() {
+
+				const posterWidth = getPosterWidthWithMargin();
+
+				gsap.to(list, {
+				    duration: TRANSITION,
+				    x: -posterWidth * index
+				});
+
+			}
+			function getPosterWidthWithMargin() {
+
+				for (const poster of posters) {
+
+					if (poster !== activePoster &&
+					poster !== previousActivePoster) {
+
+						const posterStyles = window.getComputedStyle(poster);
+						const margin = posterStyles.getPropertyValue('margin-right');
+
+						return poster.getBoundingClientRect().width + parseInt(margin);
+
+					}
+
+				}
+
+			}
+
+		}
+
 	}
 
 }
