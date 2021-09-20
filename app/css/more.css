@@ -29,3 +29,21 @@
     left: -20%;
     width: 155%;
 }
+.smoke {
+    content: "";
+    position: absolute;
+    filter: brightness(1.75);
+}
+.smoke.center {
+    bottom: 12.4%;
+    left:50.65%;
+    height: 33%;
+    width: 10%;
+}
+.smoke.aside {
+    bottom: 23%;
+    left:31%;
+    height: 42%;
+    width: 22%;
+    opacity: 0.65;
+}
