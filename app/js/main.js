@@ -3507,14 +3507,7 @@ document.addEventListener('scroll', () => {
 	if (window.scrollY >= 50) return header.classList.add('header_scrolled');
 	header.classList.remove('header_scrolled');
 });
-const bgImg = $('.back_image');
-window.addEventListener('resize', event => {
-	gsap.to(bgImg, {
-		duration: 1,
-		height: window.innerHeight,
-		ease: 'power2.inOut'
-	});
-});
+bgImageSafariFix();
 // mob menu
 $('.btn_mob_js').onclick = () => {
 	$('.nav_holder_js').classList.toggle('opened');
@@ -4186,6 +4179,20 @@ function enableGalleries() {
 		}
 
 	}
+
+}
+function bgImageSafariFix() {
+
+	// fix bg image size in iOS Safari, on scroll
+
+	const bgImg = $('.back_image');
+	window.addEventListener('resize', () => {
+		gsap.to(bgImg, {
+			duration: 1,
+			height: window.innerHeight,
+			ease: 'power2.inOut'
+		});
+	});
 
 }
 
