@@ -3516,9 +3516,9 @@ window.addEventListener('resize', event => {
 	});
 });
 // mob menu
-$('.btn_mob_js').onclick = event => {
+$('.btn_mob_js').onclick = () => {
 	$('.nav_holder_js').classList.toggle('opened');
-	event.target.classList.toggle('opened');
+	$('.btn_mob_js').classList.toggle('opened');
 };
 
 if ($('#roadmap') && window.innerWidth > 1280) mapReveal();
