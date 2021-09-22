@@ -3100,7 +3100,7 @@ function Finger(area, settings) {
 
 	const pressTime = 350;
 	const doubleTapInterval = 250;
-	const flickTreshold = 0.75;
+	const FLICK_TRESHOLD = 0.7;
 
 	let gestureType,
 		finger = this,
@@ -3407,7 +3407,7 @@ function Finger(area, settings) {
 
 					gestureType = 'drag';
 
-					if (currentTouch.speed >= flickTreshold) {
+					if (currentTouch.speed >= FLICK_TRESHOLD) {
 						currentTouch.flick = true;
 					} else {
 						currentTouch.flick = false;
@@ -4013,7 +4013,7 @@ function enableGalleries() {
 		description.style.visibility = 'hidden';
 
 		const gestures = new Finger();
-		gestures.track('drag', handleDrag);
+		gestures.track('drag', handleDrag, { preventDefault: 'horizontal' });
 
 		posters.forEach((poster, i) => {
 
@@ -4144,23 +4144,6 @@ function enableGalleries() {
 				});
 
 			}
-			function getPosterWidthWithMargin() {
-
-				for (const poster of posters) {
-
-					if (poster !== activePoster &&
-						poster !== previousActivePoster) {
-
-						const posterStyles = window.getComputedStyle(poster);
-						const margin = posterStyles.getPropertyValue('margin-right');
-
-						return poster.getBoundingClientRect().width + parseInt(margin);
-
-					}
-
-				}
-
-			}
 			function getScrollDirection() {
 
 				if (previousActivePoster) {
@@ -4227,23 +4210,26 @@ function enableGalleries() {
 			const activeIndex = +activePoster.dataset.order;
 			const distance = g.x - g.startX;
 
-			if (activeIndex === 0 && distance > 0) return;
-			if (activeIndex === posters.length - 1 && distance < 0) return;
-
 			if (g.endX) {
 
 				dragging = false;
+
+				if (activeIndex === 0 && distance > 0) {
+					backToStart(0);
+					return
+				}
+				if (activeIndex === posters.length - 1 && distance < 0) {
+					const length = getPosterWidthWithMargin() * (posters.length - 1);
+					return backToStart(-length);
+				}
+
 				let direction = 1;
 				if (g.final_direction === 'right') direction = -1;
 
-				if (Math.abs(distance) >= window.innerWidth / 4) {
+				if (Math.abs(distance) >= window.innerWidth / 4 || g.flick) {
 					highlightPoster(+activePoster.dataset.order + direction);
 				} else {
-					gsap.to(list, {
-						duration: 0.3,
-						x: listStartX,
-						ease: 'power2.easeinOut'
-					});
+					backToStart();
 				}
 
 				return;
@@ -4259,7 +4245,44 @@ function enableGalleries() {
 				x: listStartX + distance
 			});
 
+			function backToStart(coord) {
 
+				if (coord === undefined) {
+
+					gsap.to(list, {
+						duration: 0.5,
+						x: listStartX,
+						ease: 'power3.out'
+					});
+
+				} else {
+
+					gsap.to(list, {
+						duration: 0.5,
+						x: coord,
+						ease: 'power3.out'
+					});
+
+				}
+
+			}
+
+		}
+		function getPosterWidthWithMargin() {
+
+			for (const poster of posters) {
+
+				if (poster !== activePoster &&
+					poster !== previousActivePoster) {
+
+					const posterStyles = window.getComputedStyle(poster);
+					const margin = posterStyles.getPropertyValue('margin-right');
+
+					return poster.getBoundingClientRect().width + parseInt(margin);
+
+				}
+
+			}
 
 		}
 
