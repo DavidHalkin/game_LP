@@ -3501,18 +3501,11 @@ function Finger(area, settings) {
 
 }
 
+// ======= liteBox.pro above =======
 
-document.addEventListener('scroll', () => {
-	const header = $('.header_js');
-	if (window.scrollY >= 50) return header.classList.add('header_scrolled');
-	header.classList.remove('header_scrolled');
-});
+headerBackdrop();
+mobileMenu();
 bgImageSafariFix();
-// mob menu
-$('.btn_mob_js').onclick = () => {
-	$('.nav_holder_js').classList.toggle('opened');
-	$('.btn_mob_js').classList.toggle('opened');
-};
 
 if ($('#roadmap') && window.innerWidth > 1280) mapReveal();
 if ($('.img_decor')) controlAsideDecor();
@@ -3521,6 +3514,23 @@ if ($('.hero_block')) parallax();
 if ($('.main_nav')) smoothAutoScroll();
 if ($('.js_posters_gallery')) enableGalleries();
 
+function mobileMenu() {
+
+	const burger = $('.btn_mob_js');
+
+	burger.onclick = () => {
+		$('.nav_holder_js').classList.toggle('opened');
+		burger.classList.toggle('opened');
+	};
+
+}
+function headerBackdrop() {
+	document.addEventListener('scroll', () => {
+		const header = $('.header_js');
+		if (window.scrollY >= 50) return header.classList.add('header_scrolled');
+		header.classList.remove('header_scrolled');
+	});
+}
 function mapReveal() {
 
 	const SCREEN_MARGIN = 300;
