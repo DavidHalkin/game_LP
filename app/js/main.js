@@ -3503,6 +3503,7 @@ function Finger(area, settings) {
 
 // ======= liteBox.pro above =======
 
+const user = new User();
 headerBackdrop();
 mobileMenu();
 bgImageSafariFix();
@@ -3514,6 +3515,28 @@ if ($('.hero_block')) parallax();
 if ($('.main_nav')) smoothAutoScroll();
 if ($('.js_posters_gallery')) enableGalleries();
 
+function User() {
+
+	const cursorType = checkCursorType();
+
+	this.cursor = cursorType;
+
+	function checkCursorType() {
+
+		let regular = window.matchMedia('(pointer:fine)');
+		let touch = window.matchMedia('(pointer:coarse)');
+
+		if (regular.matches) {
+			return 'fine'; // обычный курсор
+		} else if (touch.matches) {
+			return 'coarse'; // тач-скрин
+		} else {
+			return 'none'; // устройство без курсора
+		}
+
+	}
+
+}
 function mobileMenu() {
 
 	const burger = $('.btn_mob_js');
@@ -3984,8 +4007,13 @@ function enableGalleries() {
 
 		let previousActivePoster;
 		let activePoster;
+		let listStartX;
+		let dragging = false;
 
 		description.style.visibility = 'hidden';
+
+		const gestures = new Finger();
+		gestures.track('drag', handleDrag);
 
 		posters.forEach((poster, i) => {
 
@@ -4037,8 +4065,13 @@ function enableGalleries() {
 
 			posters.forEach(poster => {
 				if (poster.classList.contains('active')) highlightedPosterExists = true;
-				if (poster === activePoster) return poster.classList.add('active');
+				if (poster === activePoster) {
+					poster.classList.add('active');
+					if (user.cursor === 'coarse') gestures.on(poster);
+					return;
+				}
 				poster.classList.remove('active');
+				gestures.off(poster);
 			});
 
 			swapDescription();
@@ -4185,6 +4218,48 @@ function enableGalleries() {
 				}
 
 			}
+
+		}
+		function handleDrag(g) {
+
+			if (g.initial_direction === 'top' || g.initial_direction === 'bottom') return;
+
+			const activeIndex = +activePoster.dataset.order;
+			const distance = g.x - g.startX;
+
+			if (activeIndex === 0 && distance > 0) return;
+			if (activeIndex === posters.length - 1 && distance < 0) return;
+
+			if (g.endX) {
+
+				dragging = false;
+				let direction = 1;
+				if (g.final_direction === 'right') direction = -1;
+
+				if (Math.abs(distance) >= window.innerWidth / 4) {
+					highlightPoster(+activePoster.dataset.order + direction);
+				} else {
+					gsap.to(list, {
+						duration: 0.3,
+						x: listStartX,
+						ease: 'power2.easeinOut'
+					});
+				}
+
+				return;
+
+			}
+
+			if (!dragging) {
+				listStartX = gsap.getProperty(list, 'x');
+				dragging = true;
+			}
+
+			gsap.set(list, {
+				x: listStartX + distance
+			});
+
+
 
 		}
 
