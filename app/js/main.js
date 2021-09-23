@@ -184,6 +184,10 @@ function Lbxp() {
 		mainEl.addEventListener('lbxp-swap-media', handleSwap);
 		mainEl.addEventListener('lbxp-closed', hide);
 
+		elem.onclick = event => {
+			if (event.target.tagName !== 'IMG') close();
+		}
+
 		let self = this;
 		this.elem = elem;
 		this.style = style;
