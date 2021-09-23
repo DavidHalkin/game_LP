@@ -14,12 +14,13 @@
     left: -50%;
     height: 100%;
     width: 200%;
+    mix-blend-mode: color;
     background: linear-gradient(
         to bottom,
-        hsla(100, 100%, 50%, 0) 20%,
-        hsla(100, 100%, 50%, 1) 40%,
-        hsla(100, 100%, 50%, 1) 60%,
-        hsla(100, 100%, 50%, 0) 80%
+        hsla(120, 100%, 45%, 0) 15%,
+        hsla(120, 100%, 45%, 1) 40%,
+        hsla(120, 100%, 45%, 1) 60%,
+        hsla(120, 100%, 45%, 0) 85%
     );
     transform-origin: center;
     animation: frameglow 6s linear infinite;
