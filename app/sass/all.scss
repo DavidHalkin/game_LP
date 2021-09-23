@@ -360,6 +360,27 @@
 		.btn{
 			margin-right: 70px;
 		}
+		.timer_block{
+			position: absolute;
+			bottom: 100%;
+			left: 80px;
+			transform:translateX(30%);
+			@media screen and (max-width: 1280px) {
+				transform:none;
+				left: 70px;
+			}
+			@media screen and (max-width: 800px) {
+				position: static;
+				max-width: 100%;
+				flex:0 0 100%;
+			}
+		}
+		@media screen and (max-width: 1280px) {
+			margin-top: 30px;
+			@media screen and (max-width: 800px) {
+				margin-top: 0;
+			}
+		}
 	}
 	@media screen and (max-width: 1280px) {
 		padding-top: 0;
@@ -397,4 +418,37 @@
     will-change: auto;
     mask:url(../images/map/splash-mask.png) center no-repeat;
     mask-size: 6000px;
+}
+.timer_block{
+	text-transform: uppercase;
+	font-family: 'Josefin Sans', sans-serif !important;
+	padding: 8px;
+	white-space: nowrap;
+	span{
+		color: #fff;
+		font-size: 16px;
+		line-height: 20px;
+		text-shadow:2px 2px 4px  rgba(#000,1);
+		padding-right: 10px;
+		@media screen and (max-width: 1280px) {
+			font-size: 14px;
+		}
+	}
+	strong{
+		font-size: 18px;
+		line-height: 20px;
+		color: #ffcc00;
+		font-weight: normal;
+		width: 40px;
+		text-align: center;
+		text-shadow:2px 2px 4px  rgba(#000,1);
+		@media screen and (max-width: 1280px) {
+			width: 35px;
+		}
+		em{
+			font-size: 11px;
+			line-height: 14px;
+			font-style: normal;
+		}
+	}
 }

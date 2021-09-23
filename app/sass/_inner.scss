@@ -191,14 +191,26 @@
 	}
 	.slider_description{
 		padding-top: 50px;
+		padding-top: 20px;
 		position: relative;
 		z-index: 4;
+		.slider_title{
+			p{
+				@media screen and (min-width: 987px){
+					margin-top: 0;
+					// background: red;
+				}
+			}
+		}
 		p{
 			color: #ededed;
 			font-size: 18px;
 			line-height: 21px;
 			margin-bottom: 0;
 			font-weight: 300;
+			@media screen and (min-width: 987px) {
+				margin-top: 20px;
+			}
 			b{
 				color: #ffcc00;
 				font-weight: 600;
@@ -241,6 +253,7 @@
 		margin: 0 auto;
 		.slider_title {
 			width: 100%;
+			margin-bottom: 20px;
 		}
 		.slider_description{
 			.col_6{
