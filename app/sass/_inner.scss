@@ -510,3 +510,18 @@
 		display: none;
 	}
 }
+.test{
+	position: relative;
+	display: block;
+	&:after{
+		content: "";
+		width: 82%;
+		height: 82%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform:translate(-50%,-50%);
+		z-index: -1;
+		box-shadow: 0 0 300px hsla(220, 60%, 50%, 0.65);
+	}
+}
