@@ -5,7 +5,7 @@
     transition: width 0.5s cubic-bezier(0.2, 0, 0, 1), margin-top 0.5s cubic-bezier(0.2, 0, 0, 1);
 }
 #legendary img {
-    filter: drop-shadow(0 0 240px hsla(220, 60%, 50%, .65));
+    filter: drop-shadow(0 0 240px hsla(220, 60%, 50%, 0.65));
 }
 #legendary_frame_glow .frame_light {
     content: "";
@@ -26,6 +26,9 @@
 }
 @keyframes frameglow {
     0% { transform: rotate3d(0, 0, 1, 0deg) }
+    25% { transform: rotate3d(0, 0, 1, 90deg) }
+    50% { transform: rotate3d(0, 0, 1, 180deg) }
+    75% { transform: rotate3d(0, 0, 1, 270deg) }
     100% { transform: rotate3d(0, 0, 1, 360deg) }
 }
 #legendary_frame_glow {
