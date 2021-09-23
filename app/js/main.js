@@ -3518,6 +3518,11 @@ if ($('.img_block') && window.innerWidth > 1280) revealImages();
 if ($('.hero_block')) parallax();
 if ($('.main_nav')) smoothAutoScroll();
 if ($('.js_posters_gallery')) enableGalleries();
+if ($('.timer_block')) {
+	for (const timer of $$('.timer_block')) {
+		runTimers(timer);
+	}
+}
 
 function User() {
 
@@ -4305,6 +4310,34 @@ function bgImageSafariFix() {
 			ease: 'power2.inOut'
 		});
 	});
+
+}
+function runTimers(timer) {
+
+	const dateString = $('meta[name="launch-date"]').getAttribute('content');
+	const countDownDate = new Date(dateString).getTime();
+
+	let metronome = setInterval(updateCountdown, 1000);
+
+	function updateCountdown() {
+
+		const now = new Date().getTime();
+		const interval = countDownDate - now;
+
+		if (interval < 0) {
+			clearInterval(metronome);
+			timer.style.visibility = 'hidden';
+			return;
+		}
+
+		const days = Math.floor(interval / (1000 * 60 * 60 * 24));
+		const hours = Math.floor((interval % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const minutes = Math.floor((interval % (1000 * 60 * 60)) / (1000 * 60));
+		const seconds = Math.floor((interval % (1000 * 60)) / 1000);
+
+		timer.innerHTML = `<span>Coming soon:</span><strong>${days}<em>d</em></strong><strong>${hours}<em>h</em></strong><strong>${minutes}<em>m</em></strong><strong>${seconds}<em>s</em></strong>`;
+
+	}
 
 }
 
