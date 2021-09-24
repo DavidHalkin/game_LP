@@ -4041,7 +4041,7 @@ function enableGalleries() {
 
 		const arrows = new Arrows();
 
-		highlightPoster(1);
+		highlightPoster(0);
 
 		const lbxpGallery = new LiteBoxPro({
 			background: {
