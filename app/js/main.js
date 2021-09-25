@@ -3971,6 +3971,8 @@ function smoothAutoScroll() {
 	items.forEach(item => {
 		item.onclick = event => {
 
+			if (!$(new URL(event.target.href).hash)) return;
+
 			event.preventDefault();
 
 			closeMobileMenu();
