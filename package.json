@@ -4,7 +4,7 @@
   "description": "markup",
   "main": "index.js",
   "scripts": {
-    "start": "browser-sync start --server --files './app' --startPath '/app'",
+    "start": "browser-sync start --server --files './app' --startPath '/'",
     "js": "webpack --config webpack.config.js"
   },
   "repository": {
