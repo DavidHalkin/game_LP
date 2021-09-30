@@ -4020,6 +4020,7 @@ function enableGalleries() {
 		let activePoster;
 		let listStartX;
 		let dragging = false;
+		let animatingSwap = false;
 
 		description.style.visibility = 'hidden';
 
@@ -4094,29 +4095,28 @@ function enableGalleries() {
 
 				if (highlightedPosterExists) temporarityFixListHeight();
 
-				// const direction = getScrollDirection();
-
-				gsap.to(description, {
-					duration: TRANSITION / 2,
-					// x: 100 * direction,
-					autoAlpha: 0,
-					ease: 'power2.inOut',
-					onComplete: replaceContent
-				});
-
-				// gsap.set(description, {
-				//     delay: TRANSITION / 2,
-				//    	x: 100 * -direction
-				// });
+				if (animatingSwap) {
+					replaceContent();
+				} else {
+					animatingSwap = true;
+					gsap.to(description, {
+						duration: TRANSITION / 2,
+						autoAlpha: 0,
+						ease: 'power2.inOut',
+						onComplete: replaceContent
+					});
+				}
 
 				arrows.check(index);
 
 				gsap.to(description, {
 					delay: TRANSITION / 2,
 					duration: TRANSITION / 2,
-					// x: 0 * direction,
 					autoAlpha: 1,
-					ease: 'power2.inOut'
+					ease: 'power2.inOut',
+					onComplete: () => {
+						animatingSwap = false;
+					}
 				});
 
 				function replaceContent() {

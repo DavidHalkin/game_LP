@@ -4,9 +4,9 @@ module.exports = async function() {
 
     return {
         mode: 'production',
-        entry: __dirname + '/app/js/main.js',
+        entry: __dirname + '/js/main.js',
         output: {
-            path: __dirname + '/app/js',
+            path: __dirname + '/js',
             filename: 'main.min.js'
         },
         optimization: {
